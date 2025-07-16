@@ -1,9 +1,9 @@
 
-# Welcome to your CDK Python project!
+# CDK Python project!
 
 This is a blank project for CDK development with Python.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+The `cdk.json` file tells the CDK Toolkit how to execute the app.
 
 This project is set up like a standard Python project.  The initialization
 process also creates a virtualenv within this project, stored under the `.venv`
@@ -18,7 +18,7 @@ To manually create a virtualenv on MacOS and Linux:
 $ python3 -m venv .venv
 ```
 
-After the init process completes and the virtualenv is created, you can use the following
+After the init process completes and the virtualenv is created, can use the following
 step to activate your virtualenv.
 
 ```
