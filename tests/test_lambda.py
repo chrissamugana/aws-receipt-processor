@@ -1,15 +1,15 @@
 import os
 import boto3
-from moto import mock_dynamodb, mock_textract
+from moto import mock_dynamodb2  
 import pytest
-from lambda import app
+from unittest.mock import patch
+from receipt_lambda import app  # your lambda app module
 
-@mock_dynamodb
-@mock_textract
+@mock_dynamodb2
 def test_lambda_handler():
     os.environ['TABLE_NAME'] = 'ReceiptsTable'
 
-    # Setup mock table
+    # Setup mock DynamoDB table
     ddb = boto3.client('dynamodb', region_name='eu-west-1')
     ddb.create_table(
         TableName='ReceiptsTable',
@@ -18,7 +18,7 @@ def test_lambda_handler():
         BillingMode='PAY_PER_REQUEST'
     )
 
-    # Mock event
+    # Mock event as per your lambda trigger
     event = {
         "Records": [
             {
@@ -30,5 +30,15 @@ def test_lambda_handler():
         ]
     }
 
-    result = app.handler(event, None)
+    # Patch boto3 client for textract since moto does NOT support Textract mocks
+    with patch('boto3.client') as mock_boto_client:
+        mock_textract = mock_boto_client.return_value
+        mock_textract.analyze_document.return_value = {
+            "Blocks": [{"BlockType": "LINE", "Text": "Sample receipt text"}]
+        }
+
+        # Call your lambda handler
+        result = app.handler(event, None)
+
     assert result['statusCode'] == 200
+
