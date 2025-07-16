@@ -1,18 +1,10 @@
 #!/usr/bin/env python3
-import os
-
 import aws_cdk as cdk
-
-from receipt_app.receipt_stack import ReceiptStack  # ✅ Custom stack class
+from receipt_app.receipt_stack import ReceiptProcessorStack
 
 app = cdk.App()
-
-# ✅ Instantiate your stack (use a descriptive name for clarity)
-ReceiptStack(
-    app, 
-    "ReceiptProcessorStack",
-    # Optional: Define env if you want to lock this to a specific account/region
-    # env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION'))
-)
-
+ReceiptProcessorStack(app, "ReceiptProcessorStack", env=cdk.Environment(
+    region="eu-west-1"
+))
 app.synth()
+
