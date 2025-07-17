@@ -1,6 +1,4 @@
-markdown
-Copy
-Edit
+
 # 📥 AWS Serverless Receipt Processing System
 
 This project is a fully serverless receipt processing system built with **AWS CDK (Python)**. It automatically processes uploaded receipt images by extracting key information and emailing the results back to the user.
