@@ -11,3 +11,5 @@ cdk.out
 sns-publish-policy.json
 cached kms-sns-policy.json
 cached cloudwatch-policy.json 
+cloudwatch-policy.json
+kms-sns-policy.json
