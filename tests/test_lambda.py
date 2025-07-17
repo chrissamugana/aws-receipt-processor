@@ -1,8 +1,14 @@
+import sys
 import os
 import boto3
 import pytest
 from moto import mock_aws
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
+
+# Add the parent directory to Python path so it can find receipt_lambda folder
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+# Now import from receipt_lambda/app.py
 from receipt_lambda.app import handler
 
 @mock_aws
