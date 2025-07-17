@@ -18,13 +18,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install -e .
     
     - name: Run unit tests
       run: |
-        python -m pytest tests/test_lambda.py -v
+        python -m pytest tests/ -v
     
     - name: CDK synth
       run: |
         # Add your CDK synth commands here if needed
-        echo "CDK synth completed"
+        echo "CDK synth placeholder"

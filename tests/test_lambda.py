@@ -1,14 +1,14 @@
-import sys
 import os
+import sys
 import boto3
 import pytest
 from moto import mock_aws
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 
-# Add the parent directory to Python path so it can find receipt_lambda folder
+# Add the project root to Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-# Now import from receipt_lambda/app.py
+# Now import your handler - adjust the import path based on your actual file structure
 from receipt_lambda.app import handler
 
 @mock_aws
@@ -58,4 +58,3 @@ def test_lambda_handler():
             
             # Add your assertions here
             assert result is not None
-            # Add more specific assertions based on what your handler should return
