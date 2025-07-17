@@ -1,4 +1,7 @@
-# 📥 AWS Receipt Processing System
+markdown
+Copy
+Edit
+# 📥 AWS Serverless Receipt Processing System
 
 This project is a fully serverless receipt processing system built with **AWS CDK (Python)**. It automatically processes uploaded receipt images by extracting key information and emailing the results back to the user.
 
@@ -15,3 +18,55 @@ This project is a fully serverless receipt processing system built with **AWS CD
 
 ## 📁 Project Structure
 
+aws-receipt-processor/
+├── README.md
+├── .gitignore
+├── .github/
+│ └── workflows/
+│ └── ci.yml
+├── cdk/
+│ ├── app.py
+│ ├── cdk.json
+│ ├── requirements.txt
+│ └── receipt_app/
+│ └── receipt_stack.py
+├── lambda/
+│ ├── app.py
+│ ├── parse_utils.py
+│ ├── email_template.html
+│ └── requirements.txt
+├── tests/
+│ ├── test_handler.py
+│ └── test_utils.py
+
+markdown
+Copy
+Edit
+
+---
+
+## 🚀 How It Works
+
+1. **User uploads a receipt** image to S3.
+2. **S3 Event** triggers the Lambda function.
+3. **Lambda**:
+   - Uses **Textract** to extract text.
+   - Parses key data like merchant, total, date.
+   - Stores parsed data in **DynamoDB**.
+   - Renders email with **Jinja2** and sends it via **SES**.
+4. **User receives email** with the receipt summary.
+
+---
+
+## 📦 Tech Stack
+
+- **AWS CDK (Python)**
+- **Lambda**
+- **Textract**
+- **S3**
+- **SES**
+- **DynamoDB**
+- **GitHub Actions**
+- **Boto3 + Jinja2**
+
+---
