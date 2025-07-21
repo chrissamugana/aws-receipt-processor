@@ -14,35 +14,6 @@ This project is a fully serverless receipt processing system built with **AWS CD
 
 ---
 
-## 📁 Project Structure
-
-aws-receipt-processor/
-├── README.md
-├── .gitignore
-├── .github/
-│ └── workflows/
-│ └── ci.yml
-├── cdk/
-│ ├── app.py
-│ ├── cdk.json
-│ ├── requirements.txt
-│ └── receipt_app/
-│ └── receipt_stack.py
-├── lambda/
-│ ├── app.py
-│ ├── parse_utils.py
-│ ├── email_template.html
-│ └── requirements.txt
-├── tests/
-│ ├── test_handler.py
-│ └── test_utils.py
-
-markdown
-Copy
-Edit
-
----
-
 ## 🚀 How It Works
 
 1. **User uploads a receipt** image to S3.
